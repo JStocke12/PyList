@@ -52,7 +52,27 @@ class PyList:
             pass
             
         return result
-    
+
+    def swap(self,index1,index2):
+        if index1 >= self.numItems:
+            raise IndexError("PyList index out of range")
+        
+        if index2 >= self.numItems:
+            raise IndexError("PyList index out of range")
+
+        if index1 == index2:
+            return
+
+        item = self[index1]
+        self[index1] = self[index2]
+        self[index2] = item
+
+    def sorted(self):
+      for i in range(self.numItems-1):
+        if self[i]>self[i+1]:
+          return False
+
+      return True
     
     def __contains__(self,item):
         for i in range(self.numItems):
@@ -139,7 +159,7 @@ def main():
     
     for i in range(100):
         lst.append(i)
-    
+
     lst2 = PyList(lst)
     
     print(lst)
