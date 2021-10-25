@@ -152,6 +152,12 @@ class PyList:
             
     def sort(self):
         pass
+
+    def bubbleSort(self):
+        while not self.sorted():
+              for i in range(self.numItems-1):
+                  if self[i] > self[i+1]:
+                      self.swap(i,i+1)
         
                 
 def main():
