@@ -1,3 +1,5 @@
+from random import shuffle
+
 class PyList:
     def __init__(self,contents=[], size=10):
         # The contents allows the programmer to construct a list with
@@ -159,8 +161,18 @@ class PyList:
                   if self[i] > self[i+1]:
                       self.swap(i,i+1)
         
+def almostSorted(size,swaps):
+    l = PyList(range(size))
+    elem = list(range(swaps*2))
+    shuffle(elem)
+    elem = [[elem[i+1],elem[-(i+1)]] for i in range(swaps)]
+    for i in elem:
+        l.swap(i[0],i[1])
+    return l
                 
 def main():
+    print(almostSorted(10,5))
+
     lst = PyList()
     
     for i in range(100):
