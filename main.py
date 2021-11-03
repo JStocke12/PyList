@@ -178,8 +178,13 @@ def timedBubbleSort(list):
     return endtime-starttime
 
 def main():
-    for i in range(200):
-        print(timedBubbleSort(almostSorted(5*i,i)))
+    csvout = open("Sort_Times.csv","w")
+    for k in range(1,5):
+        for i in range(200):
+            dataRow = "{},{},{}\n".format(k,2*k*i,timedBubbleSort(almostSorted(2*k*i,i)))
+            csvout.write(dataRow)
+            print(dataRow)
+
 
 def tests():
     lst = PyList()
