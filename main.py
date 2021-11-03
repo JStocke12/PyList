@@ -181,6 +181,7 @@ def main():
     for i in range(200):
         print(timedBubbleSort(almostSorted(5*i,i)))
 
+def tests():
     lst = PyList()
     
     for i in range(100):
