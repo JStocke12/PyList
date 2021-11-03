@@ -1,4 +1,5 @@
 from random import shuffle
+from time import thread_time
 
 class PyList:
     def __init__(self,contents=[], size=10):
@@ -169,9 +170,16 @@ def almostSorted(size,swaps):
     for i in elem:
         l.swap(i[0],i[1])
     return l
-                
+
+def timedBubbleSort(list):
+    starttime = thread_time()
+    list.bubbleSort()
+    endtime = thread_time()
+    return endtime-starttime
+
 def main():
-    print(almostSorted(10,5))
+    for i in range(200):
+        print(timedBubbleSort(almostSorted(5*i,i)))
 
     lst = PyList()
     
