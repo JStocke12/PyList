@@ -179,9 +179,16 @@ def timedBubbleSort(list):
 
 def main():
     csvout = open("Sort_Times.csv","w")
-    for k in range(1,5):
+    '''for k in range(1,5):
         for i in range(200):
             dataRow = "{},{},{}\n".format(k,2*k*i,timedBubbleSort(almostSorted(2*k*i,i)))
+            csvout.write(dataRow)
+            print(dataRow)'''
+    
+    for i in range(5,1000):
+            shfl = list(range(i))
+            shuffle(shfl)
+            dataRow = "{},{},{},{}\n".format(i,timedBubbleSort(PyList(almostSorted(i,1))),timedBubbleSort(PyList(shfl)),timedBubbleSort(PyList(list(range(i))[::-1])))
             csvout.write(dataRow)
             print(dataRow)
 
