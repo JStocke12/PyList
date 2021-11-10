@@ -162,16 +162,20 @@ class PyList:
                   if self[i] > self[i+1]:
                       self.swap(i,i+1)
 
-    def maxIndex(self):
+    def maxIndex(self,last=-1):
+        if last < 0:
+            last = self.numItems + last + 1
         index = 0
-        for i in range(self.numItems):
+        for i in range(last):
             if self[i] > self[index]:
                 index = i
         return index
                 
-    def minIndex(self):
+    def minIndex(self,last=-1):
+        if last < 0:
+            last = self.numItems + last + 1
         index = 0
-        for i in range(self.numItems):
+        for i in range(last):
             if self[i] < self[index]:
                 index = i
         return index
@@ -203,7 +207,7 @@ def main():
     lst = PyList([300]) + lst + PyList([-1,2,101])
 
     print(lst.maxIndex())
-    print(lst.minIndex())
+    print(lst.minIndex(99))
 
 def bubbleTable():
     csvout = open("Sort_Times.csv","w")
