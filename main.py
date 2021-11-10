@@ -161,6 +161,23 @@ class PyList:
               for i in range(self.numItems-1):
                   if self[i] > self[i+1]:
                       self.swap(i,i+1)
+
+    def maxIndex(self):
+        index = 0
+        for i in range(self.numItems):
+            if self[i] > self[index]:
+                index = i
+        return index
+                
+    def minIndex(self):
+        index = 0
+        for i in range(self.numItems):
+            if self[i] < self[index]:
+                index = i
+        return index
+
+    def insertionSort(self):
+        pass
         
 def almostSorted(size,swaps):
     l = PyList(range(size))
@@ -178,6 +195,17 @@ def timedBubbleSort(list):
     return endtime-starttime
 
 def main():
+    lst = PyList(range(100))
+
+    print(lst.maxIndex())
+    print(lst.minIndex())
+
+    lst = PyList([300]) + lst + PyList([-1,2,101])
+
+    print(lst.maxIndex())
+    print(lst.minIndex())
+
+def bubbleTable():
     csvout = open("Sort_Times.csv","w")
     '''for k in range(1,5):
         for i in range(200):
