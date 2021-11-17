@@ -206,13 +206,21 @@ def timedBubbleSort(list):
     endtime = thread_time()
     return endtime-starttime
 
+def timedInsertionSort(list):
+    starttime = thread_time()
+    list.insertionSort()
+    endtime = thread_time()
+    return endtime-starttime
+
 def main():
-    lst = PyList(list(range(20))[::-1])
-
-    shuffle(lst)
-
-    print(lst)
-    print(lst.insertionSort())
+    csvout = open("Insertion_Sort_Times.csv","w")
+    
+    for i in range(5,1000):
+            shfl = list(range(i))
+            shuffle(shfl)
+            dataRow = "{},{},{},{}\n".format(i,timedBubbleSort(PyList(almostSorted(i,1))),timedBubbleSort(PyList(shfl)),timedBubbleSort(PyList(list(range(i))[::-1])))
+            csvout.write(dataRow)
+            print(dataRow)
 
 def bubbleTable():
     csvout = open("Sort_Times.csv","w")
