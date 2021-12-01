@@ -189,6 +189,12 @@ class PyList:
             self.insert(i,maxE)
             print(self)
         return self
+
+    def merge(self,other):
+        for i in self.numItems:
+            if self[i]>other[0]:
+                self.insert(i,other[0])
+                del other[0]
             
         
 def almostSorted(size,swaps):
@@ -213,6 +219,9 @@ def timedInsertionSort(list):
     return endtime-starttime
 
 def main():
+    lst = []
+
+def insertionTable():
     csvout = open("Insertion_Sort_Times.csv","w")
     
     for i in range(5,1000):
