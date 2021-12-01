@@ -34,10 +34,10 @@ class PyList:
             self.__makeroom()
            
         if i < self.numItems:
+            self.numItems += 1
             for j in range(self.numItems-1, i, -1):
                 self[j] = self[j-1]
             self[i] = e
-            self.numItems += 1
 
         else:
             self.append(e)
@@ -191,10 +191,13 @@ class PyList:
         return self
 
     def merge(self,other):
-        for i in self.numItems:
+        for i in range(self.numItems):
             if self[i]>other[0]:
                 self.insert(i,other[0])
                 del other[0]
+        for i in range(other.numItems):
+            self.append(other[0])
+            del other[0]
             
         
 def almostSorted(size,swaps):
@@ -219,7 +222,21 @@ def timedInsertionSort(list):
     return endtime-starttime
 
 def main():
-    lst = []
+    lst1 = PyList()
+
+    for i in list(range(50))+list(range(100,150)):
+        lst1.append(i)
+
+    lst2 = PyList()
+
+    for i in list(range(50,100))+list(range(150,200)):
+        lst2.append(i)
+
+    print(lst1,lst2)
+
+    lst1.merge(lst2)
+
+    print(lst1)
 
 def insertionTable():
     csvout = open("Insertion_Sort_Times.csv","w")
