@@ -222,15 +222,9 @@ def timedInsertionSort(list):
     return endtime-starttime
 
 def main():
-    lst1 = PyList()
+    lst1 = PyList(list(range(50))+list(range(100,150)))
 
-    for i in list(range(50))+list(range(100,150)):
-        lst1.append(i)
-
-    lst2 = PyList()
-
-    for i in list(range(50,100))+list(range(150,200)):
-        lst2.append(i)
+    lst2 = PyList(list(range(50,100))+list(range(150,200)))
 
     print(lst1,lst2)
 
