@@ -214,7 +214,6 @@ class PyList:
             end = len(self)
         if end-start > 1:
             pivot = (end-start)//2+start
-            print(self,start,pivot,end)
             self.mergeSort(start,pivot)
             self.mergeSort(pivot,end)
             self.mergeInPlace(start,pivot,end)
@@ -242,13 +241,19 @@ def timedInsertionSort(list):
     return endtime-starttime
 
 def main():
-    lst = PyList([1,3,5,7,0,2,4,6])
+    shfl = list(range(100))
+
+    shuffle(shfl)
+
+    lst = PyList(shfl)
 
     print(lst)
 
     lst.mergeSort()
 
     print(lst)
+
+    print(lst.sorted())
 
 def insertionTable():
     csvout = open("Insertion_Sort_Times.csv","w")
