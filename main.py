@@ -198,6 +198,26 @@ class PyList:
         for i in range(other.numItems):
             self.append(other[0])
             del other[0]
+
+    def mergeInPlace(self,start,pivot,end):
+        for i in range(start,end):
+            if self[i]>self[pivot]:
+                self.insert(i,self[pivot])
+                pivot += 1
+                del self[pivot]
+            if pivot == end:
+                return
+
+
+    def mergeSort(self, start=0, end=-1):
+        if end == -1:
+            end = len(self)
+        if end-start > 1:
+            pivot = (end-start)//2+start
+            print(self,start,pivot,end)
+            self.mergeSort(start,pivot)
+            self.mergeSort(pivot,end)
+            self.mergeInPlace(start,pivot,end)
             
         
 def almostSorted(size,swaps):
@@ -222,15 +242,13 @@ def timedInsertionSort(list):
     return endtime-starttime
 
 def main():
-    lst1 = PyList(list(range(50))+list(range(100,150)))
+    lst = PyList([1,3,5,7,0,2,4,6])
 
-    lst2 = PyList(list(range(50,100))+list(range(150,200)))
+    print(lst)
 
-    print(lst1,lst2)
+    lst.mergeSort()
 
-    lst1.merge(lst2)
-
-    print(lst1)
+    print(lst)
 
 def insertionTable():
     csvout = open("Insertion_Sort_Times.csv","w")
