@@ -213,7 +213,7 @@ class PyList:
         if end == -1:
             end = len(self)
         if end-start > 1:
-            pivot = (end-start)//2+start
+            pivot = (end+start)//2
             self.mergeSort(start,pivot)
             self.mergeSort(pivot,end)
             self.mergeInPlace(start,pivot,end)
