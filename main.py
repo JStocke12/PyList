@@ -240,20 +240,25 @@ def timedInsertionSort(list):
     endtime = thread_time()
     return endtime-starttime
 
+def timedMergeSort(list):
+    starttime = thread_time()
+    list.mergeSort()
+    endtime = thread_time()
+    return endtime-starttime
+
 def main():
-    shfl = list(range(100))
 
-    shuffle(shfl)
+    pass
 
-    lst = PyList(shfl)
-
-    print(lst)
-
-    lst.mergeSort()
-
-    print(lst)
-
-    print(lst.sorted())
+def mergeTable():
+    csvout = open("Merge_Sort_Times.csv","w")
+    
+    for i in range(5,1000):
+            shfl = list(range(i))
+            shuffle(shfl)
+            dataRow = "{},{},{},{}\n".format(i,timedMergeSort(PyList(almostSorted(i,1))),timedMergeSort(PyList(shfl)),timedMergeSort(PyList(list(range(i))[::-1])))
+            csvout.write(dataRow)
+            print(dataRow)
 
 def insertionTable():
     csvout = open("Insertion_Sort_Times.csv","w")
@@ -261,7 +266,7 @@ def insertionTable():
     for i in range(5,1000):
             shfl = list(range(i))
             shuffle(shfl)
-            dataRow = "{},{},{},{}\n".format(i,timedBubbleSort(PyList(almostSorted(i,1))),timedBubbleSort(PyList(shfl)),timedBubbleSort(PyList(list(range(i))[::-1])))
+            dataRow = "{},{},{},{}\n".format(i,timedInsertionSort(PyList(almostSorted(i,1))),timedInsertionSort(PyList(shfl)),timedInsertionSort(PyList(list(range(i))[::-1])))
             csvout.write(dataRow)
             print(dataRow)
 
